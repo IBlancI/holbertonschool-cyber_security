@@ -1,3 +1,2 @@
 #!/bin/bash
-length=$1
-< /dev/urandom tr -dc '[:alnum:]' | head -c ${length}
+openssl rand -base64 "$1" | tr -dc "[:alnum:]" | head -c "$1"
