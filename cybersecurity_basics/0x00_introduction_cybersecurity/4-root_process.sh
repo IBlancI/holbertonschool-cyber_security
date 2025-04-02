@@ -1,3 +1,2 @@
 #!/bin/bash
-user=$1
-ps aux | grep "^$user" | grep -v ' 0[[:space:]]*0'
+ps -u "$1" -o user,pid,%cpu,%mem,vsz,rss,command --no-headers | awk '$5>0 && $6>0' | head -n 2
